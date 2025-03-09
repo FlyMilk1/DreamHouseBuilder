@@ -9,6 +9,10 @@ public class MenuButtons : MonoBehaviour
     public Transform[] ButtonPositions;
     int currentTransform = 0;
     Stopwatch stopwatch = new Stopwatch();
+    public string Axis = "Horizontal";
+    public bool TwoDim = false;
+    public string sndAxis;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +28,7 @@ public class MenuButtons : MonoBehaviour
         
         if(stopwatch.ElapsedMilliseconds >= 250)
         {
-            if (Input.GetAxis("Horizontal") > 0)
+            if (Input.GetAxis(Axis) > 0)
             {
                 if (currentTransform >= ButtonPositions.Length - 1)
                 {
@@ -38,7 +42,7 @@ public class MenuButtons : MonoBehaviour
                 stopwatch.Restart();
                 transform.position = ButtonPositions[currentTransform].position;
             }
-            else if (Input.GetAxis("Horizontal") < 0)
+            else if (Input.GetAxis(Axis) < 0)
             {
                 if (currentTransform <= 0)
                 {
@@ -50,6 +54,36 @@ public class MenuButtons : MonoBehaviour
                 }
                 stopwatch.Restart();
                 transform.position = ButtonPositions[currentTransform].position;
+            }
+            if (TwoDim)
+            {
+                if (Input.GetAxis(sndAxis) > 0)
+                {
+                    if (currentTransform >= ButtonPositions.Length - 1)
+                    {
+                        currentTransform = 0;
+                    }
+                    else
+                    {
+                        currentTransform++;
+
+                    }
+                    stopwatch.Restart();
+                    transform.position = ButtonPositions[currentTransform].position;
+                }
+                else if (Input.GetAxis(sndAxis) < 0)
+                {
+                    if (currentTransform <= 0)
+                    {
+                        currentTransform = ButtonPositions.Length - 1;
+                    }
+                    else
+                    {
+                        currentTransform--;
+                    }
+                    stopwatch.Restart();
+                    transform.position = ButtonPositions[currentTransform].position;
+                }
             }
         }
         if (Input.GetButtonDown("Submit"))
