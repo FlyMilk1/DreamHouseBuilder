@@ -12,6 +12,9 @@ public class MenuButtons : MonoBehaviour
     public string Axis = "Horizontal";
     public bool TwoDim = false;
     public string sndAxis;
+    public Button[] firstButtons;
+    public Button[] secondButtons;
+
     
     // Start is called before the first frame update
     void Start()
@@ -59,30 +62,14 @@ public class MenuButtons : MonoBehaviour
             {
                 if (Input.GetAxis(sndAxis) > 0)
                 {
-                    if (currentTransform >= ButtonPositions.Length - 1)
-                    {
-                        currentTransform = 0;
-                    }
-                    else
-                    {
-                        currentTransform++;
-
-                    }
+                    firstButtons[currentTransform].onClick.Invoke();
                     stopwatch.Restart();
-                    transform.position = ButtonPositions[currentTransform].position;
                 }
                 else if (Input.GetAxis(sndAxis) < 0)
                 {
-                    if (currentTransform <= 0)
-                    {
-                        currentTransform = ButtonPositions.Length - 1;
-                    }
-                    else
-                    {
-                        currentTransform--;
-                    }
+                    secondButtons[currentTransform].onClick.Invoke();
                     stopwatch.Restart();
-                    transform.position = ButtonPositions[currentTransform].position;
+                    
                 }
             }
         }
