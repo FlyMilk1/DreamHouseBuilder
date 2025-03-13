@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -410,10 +410,10 @@ RectTransform:
   - {fileID: 567376716}
   m_Father: {fileID: 1442117441}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 460, y: -455}
+  m_SizeDelta: {x: 820, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &188748069
 GameObject:
@@ -1329,7 +1329,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -25}
-  m_SizeDelta: {x: 545.4712, y: 50}
+  m_SizeDelta: {x: 761.97, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &597659454
 MonoBehaviour:
@@ -1351,7 +1351,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Music Volume
+  m_text: "\u0421\u0438\u043B\u0430 \u043D\u0430 \u043C\u0443\u0437\u0438\u043A\u0430\u0442\u0430"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1687,7 +1687,7 @@ RectTransform:
   m_Father: {fileID: 794512485}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1919,12 +1919,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2090012013}
         m_TargetAssemblyTypeName: VideoSettings, Assembly-CSharp
-        m_MethodName: ChangeSet
-        m_Mode: 3
+        m_MethodName: ChangeUp
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2092,7 +2092,7 @@ RectTransform:
   m_Father: {fileID: 1342819956}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2606,7 +2606,7 @@ RectTransform:
   m_Father: {fileID: 328639160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2732,8 +2732,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2090012013}
         m_TargetAssemblyTypeName: VideoSettings, Assembly-CSharp
-        m_MethodName: ChangeSet
-        m_Mode: 3
+        m_MethodName: ChangeDown
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2798,7 +2798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1703516749
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2902,7 +2902,7 @@ RectTransform:
   m_Father: {fileID: 1823051557}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3094,7 +3094,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -25}
-  m_SizeDelta: {x: 545.4712, y: 50}
+  m_SizeDelta: {x: 796.1, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1838088039
 MonoBehaviour:
@@ -3116,7 +3116,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SFX Volume
+  m_text: "\u0421\u0438\u043B\u0430 \u043D\u0430 \u0437\u0432. \u0435\u0444\u0435\u043A\u0442\u0438"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3449,10 +3449,10 @@ RectTransform:
   - {fileID: 2081970682}
   m_Father: {fileID: 1442117441}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 460, y: -265}
+  m_SizeDelta: {x: 820, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2081970681
 GameObject:
@@ -3579,10 +3579,10 @@ RectTransform:
   - {fileID: 1604914930}
   m_Father: {fileID: 1442117441}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 460, y: -75}
+  m_SizeDelta: {x: 820, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2090012013
 MonoBehaviour:
