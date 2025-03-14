@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,8 +16,15 @@ public class HouseMaterial : MonoBehaviour
     public Sprite[] sprites;
     public TMP_Text[] texts;
     public string[] posOpts;
+    public Transform Selector;
+    public Transform[] selections;
+    int curSel = 0;
+
+    Stopwatch sw = new Stopwatch();
+
     public MatGroup[] MatGroups;
     int curOpt = 0;
+    [System.Serializable]
     public struct MatGroup
     {
         public Material[] mat;
@@ -26,6 +34,7 @@ public class HouseMaterial : MonoBehaviour
     
     void Start()
     {
+        sw.Start();
         int mats = transform.childCount;
         for (int i = 0; i < mats; i++)
         {
@@ -95,7 +104,10 @@ public class HouseMaterial : MonoBehaviour
     // Update is called once per frame
     void ShowOptions(int opt)
     {
-        
+        if(opt == 4)
+        {
+
+        }
         for(int i=3*opt; i<3+(opt*3); i+=3)
         {
             for(int j=0; j<3; j++)
@@ -110,6 +122,6 @@ public class HouseMaterial : MonoBehaviour
     }
     void Update()
     {
-        
+        if(sw)
     }
 }
