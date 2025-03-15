@@ -1,8 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HouseMaterial : MonoBehaviour
@@ -14,16 +15,21 @@ public class HouseMaterial : MonoBehaviour
     List<GameObject> buildBlocks4 = new List<GameObject>();
     public Image[] images;
     public Sprite[] sprites;
+    public Sprite ExplosionSprite;
+    public Image destructButton;
     public TMP_Text[] texts;
     public string[] posOpts;
     public Transform Selector;
     public Transform[] selections;
     int curSel = 0;
-
+    int selectionsPossible = 3;
     Stopwatch sw = new Stopwatch();
-
+    bool awaitingDestruct = false;
     public MatGroup[] MatGroups;
     int curOpt = 0;
+    public GameObject Boulder;
+    public AudioSource boulderSFX;
+    bool bsfxplayed = false;
     [System.Serializable]
     public struct MatGroup
     {
@@ -35,6 +41,8 @@ public class HouseMaterial : MonoBehaviour
     void Start()
     {
         sw.Start();
+        destructButton.gameObject.SetActive(false);
+        Selector.position = selections[curSel].position;
         int mats = transform.childCount;
         for (int i = 0; i < mats; i++)
         {
@@ -81,7 +89,11 @@ public class HouseMaterial : MonoBehaviour
             block.AddComponent<Rigidbody>();
         }
     }
-    public void Choose(int choice)
+    public void ChooseButton(int choice)
+    {
+        Choose(choice, true);
+    }
+    public void Choose(int choice, bool confirm)
     {
        switch (curOpt)
         {
@@ -98,30 +110,107 @@ public class HouseMaterial : MonoBehaviour
                 AssignMat(buildBlocks4, MatGroups[curOpt].mat[choice]);
                 break;
         }
-        curOpt++;
-        ShowOptions(curOpt);
+        if (confirm)
+        {
+            curOpt++;
+            if(curOpt == 4)
+            {
+                Selector.gameObject.SetActive(false);
+                images[0].gameObject.SetActive(false);
+                images[2].gameObject.SetActive(false);
+                foreach (TMP_Text t in texts)
+                {
+
+                    t.text = "";
+                }
+                texts[1].text = "Натисни       , за да разрушиш";
+                images[1].sprite = ExplosionSprite;
+                destructButton.gameObject.SetActive(true);
+                awaitingDestruct = true;
+            }
+            ShowOptions(curOpt);
+        }
+        
     }
     // Update is called once per frame
     void ShowOptions(int opt)
     {
-        if(opt == 4)
+        
+        for(int i=selectionsPossible*opt; i<selectionsPossible+(opt*selectionsPossible); i+=selectionsPossible)
         {
-
-        }
-        for(int i=3*opt; i<3+(opt*3); i+=3)
-        {
-            for(int j=0; j<3; j++)
+            for(int j=0; j<selectionsPossible; j++)
             {
                 images[j].sprite = sprites[i+j];
                 texts[j].text = posOpts[i+j];
             }
         }
-                
-                
-        
+        Choose(curSel, false);
+
+
+
     }
-    void Update()
+    async void Update()
     {
-        if(sw)
+        if(sw.ElapsedMilliseconds >= 350)
+        {
+            if(Input.GetAxis("Horizontal") > 0.1f)
+            {
+                if(curSel < selectionsPossible-1)
+                {
+                    curSel++;
+                    Selector.position = selections[curSel].position;
+                    Choose(curSel, false);
+                    sw.Restart();
+                }
+                
+            }
+            else if(Input.GetAxis("Horizontal") < -0.1f)
+            {
+                if(curSel > 0) 
+                {
+                    curSel--;
+                    Selector.position = selections[curSel].position;
+                    Choose(curSel, false);
+                    sw.Restart();
+
+                }
+            }
+
+        }
+        if (Input.GetButtonDown("Submit"))
+        {
+            if(awaitingDestruct == false) 
+            {
+                selections[curSel].GetComponent<Button>().onClick.Invoke();
+            }
+            else
+            {
+                Boulder.AddComponent<Rigidbody>();
+                
+            }
+            
+        }
+        if (Input.GetButtonDown("Cancel"))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        
+        if(other.name == "Boulder")
+        {
+            if(bsfxplayed == false)
+            {
+                boulderSFX.Play();
+            }
+            bsfxplayed = true;
+            
+            Destruct(buildBlocks1);
+            Destruct(buildBlocks2);
+            Destruct(buildBlocks3);
+            Destruct(buildBlocks4);
+        }
     }
 }

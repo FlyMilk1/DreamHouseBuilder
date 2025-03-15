@@ -11,13 +11,16 @@ public class ChangeIconByJoystick : MonoBehaviour
    
     void Update()
     {
-        if(Input.GetJoystickNames() != null && cur == 1)
+        if(Input.GetJoystickNames().Length <= 0)
         {
-            gameObject.GetComponent<Image>().sprite = spriteJoystick;
+           
+            gameObject.GetComponent<Image>().sprite = spritekeyboard;
+            
         }
         else if (cur == 0)
         {
-            gameObject.GetComponent<Image>().sprite = spritekeyboard;
+           
+            gameObject.GetComponent<Image>().sprite = spriteJoystick;
         }
     }
 }
